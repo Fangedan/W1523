@@ -9,6 +9,7 @@ import Igis
 
 class InteractionLayer : Layer, KeyDownHandler
 {   
+    let ball = Ball()
     let paddleLeft = Paddle(rect:Rect(size:Size(width:10, height:100)))
     let paddleRight = Paddle(rect:Rect(size:Size(width:10, height:100)))
 
@@ -20,6 +21,9 @@ class InteractionLayer : Layer, KeyDownHandler
           // Using a meaningful name can be helpful for debugging
           super.init(name:"Interaction")
 
+          insert(entity: ball, at: .front)
+          ball.changeVelocity(velocityX: 3, velocityY: 3)
+      
           // We insert our RenderableEntities in the constructor
           insert(entity: paddleLeft, at: .front)
           insert(entity: paddleRight, at: .front)
